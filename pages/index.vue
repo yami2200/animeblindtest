@@ -18,7 +18,7 @@
               </v-btn>
               <v-spacer></v-spacer>
               <v-select
-                style="float: right; width: 60px"
+                style="width: 60px"
                 color="accent"
                 class="mt-5 ml-10"
                 :items="numberPlayed"
@@ -37,6 +37,7 @@
 <script>
 import {auth, db} from "../plugins/firebase";
 import listBlindtest from "../blindtest/listBlindtest.json";
+import {melangePlaylist} from "@/plugins/lib";
 
 export default {
 
@@ -46,30 +47,18 @@ export default {
     numberPlayed: ["All", "20", "10"],
     selectN: "All",
     selectionPlaylist : "onepiece",
-    listPlaylist : listBlindtest,
+    listPlaylist : JSON.parse(JSON.stringify(listBlindtest)),
   }),
 
   methods:{
     play(){
       let playlist = this.listPlaylist.list.filter((p) => p.name === this.selectionPlaylist);
       if(playlist.length === undefined || playlist.length === 0) return;
-      this.$store.commit("setPlaylist", playlist[0]);
+      let playlistS = JSON.parse(JSON.stringify(playlist[0]));
+      playlistS.songs = melangePlaylist(playlistS);
+      this.$store.commit("setPlaylist", playlistS);
+      this.$store.commit("setGame", JSON.parse(JSON.stringify({name : this.selectionPlaylist, number : this.selectN})));
       this.$router.push("/blindtest");
-
-      /*if(!auth.currentUser){
-        //this.bus.$emit("loginRequest");
-        //this.$
-      } else {
-        db.ref('users/' + auth.currentUser.uid).push({
-          record: Math.random()*10,
-        },(error) => {
-          if (error) {
-            console.log(error);
-          } else {
-            console.log("push successfull")
-          }
-        });
-      }*/
     },
   },
 }

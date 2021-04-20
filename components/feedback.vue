@@ -9,7 +9,7 @@
         <v-icon color="error" x-large>mdi-alert-circle</v-icon>
         <h1 class="ml-3 mt-3" style="color: #ff4452"> Incorrect !</h1>
     </v-row>
-    <v-row v-if="!correct" justify="center" align="center">
+    <v-row justify="center" align="center">
       <h1> Answer : {{ answer }}</h1>
     </v-row>
     <v-row justify="center" align="center">
@@ -30,6 +30,13 @@ export default {
   name: "feedback",
 
   props:["correct", "img", "answer"],
+
+  computed:{
+    image(){
+      if(this.img === undefined || this.img === null || this.img === "") return;
+      return require("static/"+this.img);
+    },
+  },
 
   methods:{
     next(){

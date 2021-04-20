@@ -72,5 +72,21 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    extractCSS: true,
+    extend(config, { isDev, isClient }) {
+      // ...
+      config.module.rules.push({
+        test: /\.(ttf|eot|jpg|mp3|ico|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/,
+        loader: 'file-loader'
+      });
+      /*config.module.rules.push({
+        test: /\.json$/,
+        loader: 'json-loader'
+      });*/
+      if (isDev) {
+        // asse Webpack en mode développement si `isDev` est vrai.
+        config.mode = 'development'
+      }
+    }
   }
 }

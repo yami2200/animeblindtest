@@ -1,7 +1,6 @@
 <template>
   <v-app>
 
-
     <v-app-bar dense absolute>
       <v-btn icon @click="clickPlay">
         <v-icon>mdi-play</v-icon>
@@ -11,6 +10,10 @@
 
       <v-btn icon @click="clickAccount">
         <v-icon>mdi-account</v-icon>
+      </v-btn>
+
+      <v-btn v-if="connected" icon @click="logout">
+        <v-icon>mdi-logout</v-icon>
       </v-btn>
 
     </v-app-bar>
@@ -71,7 +74,8 @@
 
     <v-main>
       <v-container fill-height fluid>
-        <nuxt :bus="bus" />
+        <nuxt/>
+
       </v-container>
     </v-main>
     <v-footer
@@ -87,7 +91,6 @@
 </template>
 
 <script>
-import Vue from "vue";
 import {auth} from "../plugins/firebase";
 
 export default {
@@ -97,14 +100,9 @@ export default {
       wrongLogin : false,
       email: "",
       password: "",
-      bus: new Vue(),
+      connected : false,
+      event : null
     }
-  },
-
-  mounted() {
-    this.bus.$on("loginRequest", () => {
-      this.dialog = true;
-    })
   },
 
   methods:{
@@ -122,13 +120,39 @@ export default {
       auth.signInWithEmailAndPassword(this.email, this.password)
         .then((userCredential) => {
           this.dialog = false;
+          this.connected = true;
         })
         .catch((error) => {
           this.wrongLogin = true;
           console.log(error);
         });
     },
-  }
+    logout(){
+      if(auth.currentUser) {
+        auth.signOut();
+      }
+      this.connected = false;
+    },
+    showingConnectionComp(){
+      let ref = this;
+      this.event = auth.onAuthStateChanged(function(user) {
+        console.log("changed !");
+        if (user != null) {
+          ref.connected = true;
+        } else {
+          ref.connected = false;
+        }
+        ref.$forceUpdate();
+      });
+    },
+  },
+
+  mounted(){
+    process.nextTick(() => {
+      this.showingConnectionComp();
+    });
+
+  },
 }
 </script>
 
