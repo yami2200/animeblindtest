@@ -40,18 +40,11 @@
                 :radius="10"
                 :value="dataT"
                 :smooth="10"
-                :padding="0"
                 :line-width="1"
                 auto-draw
                 :fill="true"
               ></v-sparkline>
-              <v-card v-else class="pa-6" height="300">
-                <v-container fill-height fluid>
-                  <v-row fill-height justify="center" align="center" height="200">
-                    <h2> No Data</h2>
-                  </v-row>
-                </v-container>
-              </v-card>
+              <emptyData v-else> </emptyData>
             </v-card>
           </v-col>
           <v-col cols="12" xl="4" sm="8" md="6">
@@ -63,64 +56,29 @@
                 :gradient="gradientS"
                 :value="dataS"
                 :smooth="10"
-                :padding="0"
                 :radius="10"
                 :line-width="1"
                 auto-draw
                 :fill="true"
               ></v-sparkline>
-              <v-card v-else class="pa-6" height="300">
-                <v-container fill-height fluid>
-                  <v-row fill-height justify="center" align="center" height="200">
-                    <h2> No Data</h2>
-                  </v-row>
-                </v-container>
-              </v-card>
+              <emptyData v-else> </emptyData>
 
             </v-card>
           </v-col>
         </v-row>
-<!--
-        <v-row justify="center" align="center">
-          <v-col cols="12" xl="2" sm="6" md="4">
-              <v-select
-                color="accent"
-                class="mt-5"
-                :items="listSongs"
-                v-model="selectedSong"
-                solo
-              ></v-select>
-          </v-col>
-        </v-row>
-
-        <v-row justify="center" align="center">
-          <v-col cols="12" xl="4" sm="8" md="6">
-            <v-card class="pa-6">
-              <h2> Time Specific Song : </h2>
-              <v-sparkline
-                v-if="dataSS!=null"
-                :radius="10"
-                height="200"
-                :value="dataSS"
-                :smooth="10"
-                :padding="0"
-                :line-width="1"
-                :gradient="gradientT"
-                auto-draw
-                :fill="true"
-              ></v-sparkline>
-            </v-card>
-          </v-col>
-        </v-row>
-    -->
   </v-container>
 </template>
 
 <script>
 import {auth, db} from "../plugins/firebase";
 import listBlindtest from "../blindtest/listBlindtest.json";
+import emptyData from "@/components/emptyData";
 
 export default {
+
+  components: {
+    "emptyData" : emptyData,
+  },
 
   data: () => ({
     dataAll : null,
@@ -156,9 +114,12 @@ export default {
         return;
       }
       this.dataT = Object.values(data).map(e => e.time);
+      if(this.dataT.length===1) this.dataT.push(this.dataT[0]);
       this.dataS = Object.values(data).map(e => e.score);
+      if(this.dataS.length===1) this.dataS.push(this.dataS[0]);
     },
     changeType(){
+      if(auth.currentUser === null)this.$router.push("/");
       db.ref('/onepiece/'+this.selectN+'/'+auth.currentUser.uid+"/").once('value').then((snapshot) => {
         this.loadDB(JSON.parse(JSON.stringify(snapshot.val())));
       });

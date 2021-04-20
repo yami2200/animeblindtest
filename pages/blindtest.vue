@@ -57,9 +57,9 @@ export default {
       this.guess = false;
       this.sound.pause();
       this.sound = null;
-      this.currentTime = 0.0;
       clearInterval(this.updateSeek);
       this.details.push({index : this.playlist.songs[this.currentIndex].index, time : this.currentTime, correct : this.correct})
+      this.currentTime = 0.0;
     },
     next(){
       if(this.currentIndex>=this.getNumberMusics()-1){
