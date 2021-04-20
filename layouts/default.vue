@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app style="overflow: hidden">
 
     <v-app-bar dense absolute>
       <v-btn icon @click="clickPlay">
