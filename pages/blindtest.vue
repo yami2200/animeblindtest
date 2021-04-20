@@ -7,6 +7,15 @@
           <v-row justify="center" align="center" class="mb-5">
             <h1> {{ getDuration }}</h1>
           </v-row>
+          <v-slider
+            @change="changeVolume"
+            v-model="volume"
+            step="0.1"
+            min="0"
+            max="1"
+            thumb-label
+            ticks
+          ></v-slider>
           <textf @commit="commit"></textf>
         </div>
         <fd @next="next" v-else :correct="correct" :img="playlist.songs[currentIndex].img" :answer="playlist.songs[currentIndex].name"></fd>
@@ -78,6 +87,7 @@ export default {
     },
     soundLoaded(){
       this.sound.removeEventListener("canplaythrough", this.soundLoaded, false);
+      this.sound.volume = this.volume;
       this.sound.play();
       this.currentTime = 0.0;
       this.updateSeek = setInterval(() => {
@@ -102,6 +112,11 @@ export default {
     getNumberMusics(){
       if(this.game.number === "All") return this.playlist.songs.length;
       return parseInt(this.game.number);
+    },
+    changeVolume(){
+      if(this.sound !== null){
+        this.sound.volume = this.volume;
+      }
     },
   },
 
