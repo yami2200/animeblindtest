@@ -6,6 +6,10 @@
         <v-icon>mdi-play</v-icon>
       </v-btn>
 
+      <v-btn icon @click="clickLeaderboard">
+        <v-icon>mdi-trophy-variant</v-icon>
+      </v-btn>
+
       <v-spacer></v-spacer>
 
       <v-btn icon @click="clickAccount">
@@ -115,6 +119,9 @@ export default {
     },
     clickPlay(){
       this.$router.push("/");
+    },
+    clickLeaderboard(){
+      this.$router.push("/leaderboard");
     },
     login(){
       auth.signInWithEmailAndPassword(this.email, this.password)
