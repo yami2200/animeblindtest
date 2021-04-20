@@ -57,6 +57,7 @@ export default {
       this.guess = false;
       this.sound.pause();
       this.sound = null;
+      this.currentTime = 0.0;
       clearInterval(this.updateSeek);
       this.details.push({index : this.playlist.songs[this.currentIndex].index, time : this.currentTime, correct : this.correct})
     },
@@ -72,7 +73,11 @@ export default {
     loadCurrent(){
       this.guess = true;
       this.sound = new Audio(this.playlist.songs[this.currentIndex].music);
-      this.sound.load();
+      this.sound.addEventListener('canplaythrough', this.soundLoaded, false);
+      //this.sound.load();
+    },
+    soundLoaded(){
+      this.sound.removeEventListener("canplaythrough", this.soundLoaded, false);
       this.sound.play();
       this.currentTime = 0.0;
       this.updateSeek = setInterval(() => {
