@@ -94,3 +94,7 @@ sw.*
 
 #firebase key
 plugins/firebase.js
+/.firebaserc
+/firebase.json
+/.firebase/hosting.ZGlzdA.cache
+/package-lock.json

@@ -46,9 +46,9 @@
 </template>
 
 <script>
-import listBlindtest from "@/blindtest/listBlindtest.json";
-import {auth, db} from "@/plugins/firebase";
+import {db} from "@/plugins/firebase";
 import emptyData from "@/components/emptyData";
+import {mix_selectionPlaylistPage} from "@/mixins/mix_selectionPlaylistPage";
 
 export default {
   name: "leaderboard",
@@ -57,11 +57,9 @@ export default {
     "emptyData" : emptyData,
   },
 
+  mixins: [mix_selectionPlaylistPage],
+
   data : () => ({
-    numberPlayed : ["All", "20", "10"],
-    selectN: "All",
-    selectionPlaylist : "onepiece",
-    listPlaylist : ["onepiece"],
     data: null,
     users: null
   }),
@@ -110,12 +108,13 @@ export default {
       db.ref('/users/').once('value').then((snapshot) => {
         this.loadUsers(JSON.parse(JSON.stringify(snapshot.val())));
       });
+    },
+    postMounted(){
+      this.changeType();
+      this.listPlaylist = this.listPlaylist.list.map(e => e.name);
     }
   },
 
-  mounted() {
-    this.changeType();
-  }
 }
 </script>
 

@@ -2,6 +2,8 @@
   "list" : [
     {
       "name" : "onepiece",
+      "listTypes" : ["All", "20", "10"],
+      "img" : "onepiecelogo.jpg",
       "songs" : [
         {
           "img": "onepiece/op1.jpg",

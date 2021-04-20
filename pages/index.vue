@@ -4,7 +4,7 @@
       <v-col cols="12" xl="4" sm="8" md="6">
         <div class="text-center">
           <v-card class="pa-2">
-            <v-img src="onepiecelogo.jpg"></v-img>
+            <v-img :src="img"></v-img>
             <v-row class="mt-2">
               <v-spacer></v-spacer>
               <v-btn
@@ -35,19 +35,17 @@
 </template>
 
 <script>
-import {auth, db} from "../plugins/firebase";
-import listBlindtest from "../blindtest/listBlindtest.json";
 import {melangePlaylist} from "@/plugins/lib";
+import {mix_selectionPlaylistPage} from "@/mixins/mix_selectionPlaylistPage";
 
 export default {
 
   props:["bus"],
 
+  mixins: [mix_selectionPlaylistPage],
+
   data: () => ({
-    numberPlayed: ["All", "20", "10"],
-    selectN: "All",
-    selectionPlaylist : "onepiece",
-    listPlaylist : JSON.parse(JSON.stringify(listBlindtest)),
+    img: "",
   }),
 
   methods:{
@@ -60,7 +58,11 @@ export default {
       this.$store.commit("setGame", JSON.parse(JSON.stringify({name : this.selectionPlaylist, number : this.selectN})));
       this.$router.push("/blindtest");
     },
+    postMounted(){
+      this.img = this.listPlaylist.list[0].img;
+    }
   },
+
 }
 </script>
 
