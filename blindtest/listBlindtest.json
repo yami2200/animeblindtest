@@ -7,7 +7,7 @@
       "difficulty" : ["normal"],
       "songs" : [
         {
-          "img": "onepiece/op1.jpg",
+          "img": "onepiece/img488218.jpg",
           "name" : "Opening 1",
           "guesswords": ["1", "op1", "op 1", "opening 1"],
           "music" : "onepiece/song4787541.mp3",
@@ -15,7 +15,7 @@
           "index" :  0
         },
         {
-          "img": "onepiece/op2.jpg",
+          "img": "onepiece/img48961.jpg",
           "name" : "Opening 2",
           "guesswords": ["2", "op2", "op 2", "opening 2"],
           "music" : "onepiece/song7986132.mp3",
@@ -23,7 +23,7 @@
           "index" :  1
         },
         {
-          "img": "onepiece/op3.jpg",
+          "img": "onepiece/img795632.jpg",
           "name" : "Opening 3",
           "guesswords": ["3", "op3", "op 3", "opening 3"],
           "music" : "onepiece/song7892135.mp3",
@@ -31,7 +31,7 @@
           "index" :  2
         },
         {
-          "img": "onepiece/op4.jpg",
+          "img": "onepiece/img789543.jpg",
           "name" : "Opening 4",
           "guesswords": ["4", "op4", "op 4", "opening 4"],
           "music" : "onepiece/song78646318.mp3",
@@ -39,7 +39,7 @@
           "index" :  3
         },
         {
-          "img": "onepiece/op5.jpg",
+          "img": "onepiece/img579531.jpg",
           "name" : "Opening 5",
           "guesswords": ["5", "op5", "op 5", "opening 5"],
           "music" : "onepiece/song484561.mp3",
@@ -47,7 +47,7 @@
           "index" :  4
         },
         {
-          "img": "onepiece/op6.jpg",
+          "img": "onepiece/img789513.jpg",
           "name" : "Opening 6",
           "guesswords": ["6", "op6", "op 6", "opening 6"],
           "music" : "onepiece/song1544583.mp3",
@@ -55,7 +55,7 @@
           "index" :  5
         },
         {
-          "img": "onepiece/op7.jpg",
+          "img": "onepiece/img9875231.jpg",
           "name" : "Opening 7",
           "guesswords": ["7", "op7", "op 7", "opening 7"],
           "music" : "onepiece/song7842364.mp3",
@@ -63,7 +63,7 @@
           "index" :  6
         },
         {
-          "img": "onepiece/op8.jpg",
+          "img": "onepiece/img4889317.jpg",
           "name" : "Opening 8",
           "guesswords": ["8", "op8", "op 8", "opening 8"],
           "music" : "onepiece/song421569.mp3",
@@ -71,7 +71,7 @@
           "index" :  7
         },
         {
-          "img": "onepiece/op9.jpg",
+          "img": "onepiece/img115486.jpg",
           "name" : "Opening 9",
           "guesswords": ["9", "op9", "op 9", "opening 9"],
           "music" : "onepiece/song4518318.mp3",
@@ -79,7 +79,7 @@
           "index" :  8
         },
         {
-          "img": "onepiece/op10.jpg",
+          "img": "onepiece/img223876.jpg",
           "name" : "Opening 10",
           "guesswords": ["10", "op10", "op 10", "opening 10"],
           "music" : "onepiece/song468518.mp3",
@@ -87,7 +87,7 @@
           "index" :  9
         },
         {
-          "img": "onepiece/op11.jpg",
+          "img": "onepiece/img75981.jpg",
           "name" : "Opening 11",
           "guesswords": ["11", "op11", "op 11", "opening 11"],
           "music" : "onepiece/song4878621.mp3",
@@ -95,7 +95,7 @@
           "index" :  10
         },
         {
-          "img": "onepiece/op12.jpg",
+          "img": "onepiece/img48318.jpg",
           "name" : "Opening 12",
           "guesswords": ["12", "op12", "op 12", "opening 12"],
           "music" : "onepiece/song123789.mp3",
@@ -103,7 +103,7 @@
           "index" :  11
         },
         {
-          "img": "onepiece/op13.jpg",
+          "img": "onepiece/img445991.jpg",
           "name" : "Opening 13",
           "guesswords": ["13", "op13", "op 13", "opening 13"],
           "music" : "onepiece/song23187.mp3",
@@ -111,7 +111,7 @@
           "index" :  12
         },
         {
-          "img": "onepiece/op14.jpg",
+          "img": "onepiece/img775522.jpg",
           "name" : "Opening 14",
           "guesswords": ["14", "op14", "op 14", "opening 14"],
           "music" : "onepiece/song3459812.mp3",
@@ -119,7 +119,7 @@
           "index" :  13
         },
         {
-          "img": "onepiece/op15.jpg",
+          "img": "onepiece/img4452186.jpg",
           "name" : "Opening 15",
           "guesswords": ["15", "op15", "op 15", "opening 15"],
           "music" : "onepiece/song654381.mp3",
@@ -127,7 +127,7 @@
           "index" :  14
         },
         {
-          "img": "onepiece/op16.jpg",
+          "img": "onepiece/img334815.jpg",
           "name" : "Opening 16",
           "guesswords": ["16", "op16", "op 16", "opening 16"],
           "music" : "onepiece/song548791.mp3",
@@ -135,7 +135,7 @@
           "index" :  15
         },
         {
-          "img": "onepiece/op17.jpg",
+          "img": "onepiece/img166872.jpg",
           "name" : "Opening 17",
           "guesswords": ["17", "op17", "op 17", "opening 17"],
           "music" : "onepiece/song9873216.mp3",
@@ -143,7 +143,7 @@
           "index" :  16
         },
         {
-          "img": "onepiece/op18.jpg",
+          "img": "onepiece/img7543988.jpg",
           "name" : "Opening 18",
           "guesswords": ["18", "op18", "op 18", "opening 18"],
           "music" : "onepiece/song7854813.mp3",
@@ -151,7 +151,7 @@
           "index" :  17
         },
         {
-          "img": "onepiece/op19.jpg",
+          "img": "onepiece/img4334795.jpg",
           "name" : "Opening 19",
           "guesswords": ["19", "op19", "op 19", "opening 19"],
           "music" : "onepiece/song4587931.mp3",
@@ -159,7 +159,7 @@
           "index" :  18
         },
         {
-          "img": "onepiece/op20.jpg",
+          "img": "onepiece/img7742335.jpg",
           "name" : "Opening 20",
           "guesswords": ["20", "op20", "op 20", "opening 20"],
           "music" : "onepiece/song4239415.mp3",
@@ -167,7 +167,7 @@
           "index" :  19
         },
         {
-          "img": "onepiece/op21.jpg",
+          "img": "onepiece/img6678421.jpg",
           "name" : "Opening 21",
           "guesswords": ["21", "op21", "op 21", "opening 21"],
           "music" : "onepiece/song32157899.mp3",
@@ -175,7 +175,7 @@
           "index" :  20
         },
         {
-          "img": "onepiece/op22.jpg",
+          "img": "onepiece/img4786138.jpg",
           "name" : "Opening 22",
           "guesswords": ["22", "op22", "op 22", "opening 22"],
           "music" : "onepiece/song7854224.mp3",
@@ -183,7 +183,7 @@
           "index" :  21
         },
         {
-          "img": "onepiece/op23.jpg",
+          "img": "onepiece/img7862189.jpg",
           "name" : "Opening 23",
           "guesswords": ["23", "op23", "op 23", "opening 23"],
           "music" : "onepiece/song7315481.mp3",

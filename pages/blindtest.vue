@@ -95,7 +95,9 @@ export default {
         if(this.currentTime >= 20){
           this.commit("Error Time #484248")
         }
-      }, 100)
+      }, 100);
+      var img = new Image();
+      img.src = this.playlist.songs[this.currentIndex].img;
     },
     setScore(){
       let score = 0;
