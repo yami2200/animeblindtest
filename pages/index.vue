@@ -25,6 +25,15 @@
                 v-model="selectN"
                 solo
               ></v-select>
+              <v-select
+                v-if="listDifficulty.length>1"
+                style="width: 60px"
+                color="accent"
+                class="mt-5 ml-10"
+                :items="listDifficulty"
+                v-model="selectedDifficulty"
+                solo
+              ></v-select>
               <v-spacer></v-spacer>
             </v-row>
           </v-card>
@@ -53,9 +62,9 @@ export default {
       let playlist = this.listPlaylist.list.filter((p) => p.name === this.selectionPlaylist);
       if(playlist.length === undefined || playlist.length === 0) return;
       let playlistS = JSON.parse(JSON.stringify(playlist[0]));
-      playlistS.songs = melangePlaylist(playlistS);
+      playlistS.songs = melangePlaylist(playlistS).filter((e) => e.difficulty.includes(this.selectedDifficulty));
       this.$store.commit("setPlaylist", playlistS);
-      this.$store.commit("setGame", JSON.parse(JSON.stringify({name : this.selectionPlaylist, number : this.selectN})));
+      this.$store.commit("setGame", JSON.parse(JSON.stringify({name : this.selectionPlaylist, number : this.selectN, difficulty : this.selectedDifficulty})));
       this.$router.push("/blindtest");
     },
     postMounted(){

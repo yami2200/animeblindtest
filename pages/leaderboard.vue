@@ -7,23 +7,38 @@
         </v-row>
 
         <v-row justify="center" align="center">
-          <v-select
-            @change="changePlaylist"
-            color="accent"
-            class="mt-5"
-            :items="listPlaylist"
-            v-model="selectionPlaylist"
-            solo
-          ></v-select>
-          <v-select
-            @change="changeType"
-            color="accent"
-            class="mt-5 ml-10"
-            :items="numberPlayed"
-            v-model="selectN"
-            solo
-          ></v-select>
+          <v-col cols="12" xl="4" md="4" sm="4">
+            <v-select
+              @change="changeType"
+              color="accent"
+              class="mt-5"
+              :items="listPlaylist"
+              v-model="selectionPlaylist"
+              solo
+            ></v-select>
+          </v-col>
+          <v-col cols="12" xl="4" md="4" sm="4">
+            <v-select
+              @change="changeType"
+              color="accent"
+              class="mt-5 ml-10"
+              :items="numberPlayed"
+              v-model="selectN"
+              solo
+            ></v-select>
+          </v-col>
+          <v-col cols="12" xl="4" md="4" sm="4" v-if="listDifficulty.length>1">
+            <v-select
+              @change="changeType"
+              color="accent"
+              class="mt-5 ml-10"
+              :items="listDifficulty"
+              v-model="selectedDifficulty"
+              solo
+            ></v-select>
+          </v-col>
         </v-row>
+
       </v-col>
     </v-row>
 
@@ -65,9 +80,6 @@ export default {
   }),
 
   methods:{
-    changePlaylist(){
-      this.changeType();
-    },
     loadDB(data){
       if(data === null) {
         this.data = null;
@@ -100,11 +112,11 @@ export default {
     loadUsers(users){
       if(users == null) this.$router.push('/');
       this.users = users;
-      db.ref('/'+this.selectionPlaylist+'/'+this.selectN).once('value').then((snapshot) => {
+      db.ref('/'+this.selectionPlaylist+'/'+this.selectedDifficulty+'/'+this.selectN).once('value').then((snapshot) => {
         this.loadDB(JSON.parse(JSON.stringify(snapshot.val())));
       });
     },
-    changeType(users){
+    changeType(){
       db.ref('/users/').once('value').then((snapshot) => {
         this.loadUsers(JSON.parse(JSON.stringify(snapshot.val())));
       });
@@ -112,7 +124,7 @@ export default {
     postMounted(){
       this.changeType();
       this.listPlaylist = this.listPlaylist.list.map(e => e.name);
-    }
+    },
   },
 
 }

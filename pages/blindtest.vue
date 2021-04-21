@@ -71,7 +71,7 @@ export default {
       this.currentTime = 0.0;
     },
     next(){
-      if(this.currentIndex>=this.getNumberMusics()-1){
+      if(this.currentIndex >= Math.min(this.getNumberMusics()-1, this.playlist.songs.length-1)){
         this.setScore();
         this.$router.push("/resultpage");
       } else {

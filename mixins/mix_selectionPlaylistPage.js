@@ -8,6 +8,8 @@ export const mix_selectionPlaylistPage = {
     selectN: "",
     selectionPlaylist : "",
     listPlaylist : [],
+    listDifficulty : [],
+    selectedDifficulty : "",
   }),
 
   methods:{
@@ -21,6 +23,8 @@ export const mix_selectionPlaylistPage = {
     this.selectionPlaylist = this.listPlaylist.list[selectedPlaylist].name;
     this.numberPlayed = this.listPlaylist.list[selectedPlaylist].listTypes;
     this.selectN = this.numberPlayed[selectedPlaylist];
+    this.listDifficulty = this.listPlaylist.list[selectedPlaylist].difficulty;
+    this.selectedDifficulty = this.listDifficulty[0];
     this.postMounted();
   },
 

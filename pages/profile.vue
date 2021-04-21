@@ -8,26 +8,40 @@
             </v-row>
 
             <v-row justify="center" align="center">
-              <v-select
-                @change="changePlaylist"
-                color="accent"
-                class="mt-5"
-                :items="listPlaylist"
-                v-model="selectionPlaylist"
-                solo
-              ></v-select>
-              <v-select
-                @change="changeType"
-                color="accent"
-                class="mt-5 ml-10"
-                :items="numberPlayed"
-                v-model="selectN"
-                solo
-              ></v-select>
+              <v-col cols="12" xl="4" md="4" sm="4">
+                <v-select
+                  @change="changePlaylist"
+                  color="accent"
+                  class="mt-5"
+                  :items="listPlaylist"
+                  v-model="selectionPlaylist"
+                  solo
+                ></v-select>
+              </v-col>
+              <v-col cols="12" xl="4" md="4" sm="4">
+                <v-select
+                  @change="changeType"
+                  color="accent"
+                  class="mt-5 ml-10"
+                  :items="numberPlayed"
+                  v-model="selectN"
+                  solo
+                ></v-select>
+              </v-col>
+              <v-col cols="12" xl="4" md="4" sm="4" v-if="listDifficulty.length>1">
+                <v-select
+                  @change="changeType"
+                  color="accent"
+                  class="mt-5 ml-10"
+                  :items="listDifficulty"
+                  v-model="selectedDifficulty"
+                  solo
+                ></v-select>
+              </v-col>
             </v-row>
+
           </v-col>
         </v-row>
-
 
         <v-row justify="center" align="center">
           <v-col cols="12" xl="4" sm="8" md="6">
@@ -73,6 +87,7 @@
 import {auth, db} from "../plugins/firebase";
 import listBlindtest from "../blindtest/listBlindtest.json";
 import emptyData from "@/components/emptyData";
+import {mix_selectionPlaylistPage} from "@/mixins/mix_selectionPlaylistPage";
 
 export default {
 
@@ -80,18 +95,11 @@ export default {
     "emptyData" : emptyData,
   },
 
+  mixins: [mix_selectionPlaylistPage],
+
   data: () => ({
-    dataAll : null,
-    personnalData : null,
-    array : ["All", "20", "10"],
-    loaded :false,
-    numberPlayed : ["All", "20", "10"],
-    selectN: "All",
-    selectionPlaylist : "onepiece",
-    listPlaylist : ["onepiece"],
-    dataT : [1,4,5,6,7,8,9,15,19,50],
-    dataS : [1,4,5,6,7,8,9,15,19,50],
-    dataSS : [1,4,5,6,7,8,9,15,19,50],
+    dataT : [],
+    dataS : [],
     listSongs : [],
     selectedSong : null,
     gradientT: ['red', 'yellow', 'green'],
@@ -120,16 +128,21 @@ export default {
     },
     changeType(){
       if(auth.currentUser === null)this.$router.push("/");
-      db.ref('/onepiece/'+this.selectN+'/'+auth.currentUser.uid+"/").once('value').then((snapshot) => {
+      db.ref('/onepiece/'+this.selectedDifficulty+'/'+this.selectN+'/'+auth.currentUser.uid+"/").once('value').then((snapshot) => {
         this.loadDB(JSON.parse(JSON.stringify(snapshot.val())));
       });
-    }
+    },
+    postMounted(){
+      if(!auth.currentUser) this.$router.push("/");
+      this.listPlaylist = this.listPlaylist.list.map(e => e.name);
+      this.changePlaylist();
+    },
   },
 
-  mounted() {
+  /*mounted() {
     if(!auth.currentUser) this.$router.push("/");
     this.changePlaylist();
-  },
+  },*/
 
 }
 </script>

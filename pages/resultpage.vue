@@ -43,7 +43,7 @@ export default {
       this.score = score;
       this.$store.commit("setScore", null);
       if(auth.currentUser){
-        db.ref(score.game.name +"/"+ score.game.number +"/" + auth.currentUser.uid+"/").push({
+        db.ref(score.game.name +"/"+score.game.difficulty+"/"+ score.game.number +"/" + auth.currentUser.uid+"/").push({
           records: score.details,
           score: score.score,
           time: score.time
