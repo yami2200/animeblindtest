@@ -1,20 +1,16 @@
-# blindtestweb
+# 🎶 Yami Blindtest
 
-## Build Setup
+## ⭐ About
 
-```bash
-# install dependencies
-$ npm install
+Yami Blindtest is a website where you can play blindtest of differents series.
+Discover the website here : https://yami-blindtest.tk/
 
-# serve with hot reload at localhost:3000
-$ npm run dev
+## 🏆 Score :
+Train your knowledge in musics and get faster to recognize them to improve your score.
+If you have an account, you can visualize your stats in your profile :
 
-# build for production and launch server
-$ npm run build
-$ npm run start
+# ![Profile](readme/readme1.jpg)
 
-# generate static project
-$ npm run generate
-```
+Train, improve your skills and climb the leaderboard :
 
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+# ![LeaderBoard](readme/readme2.jpg)
