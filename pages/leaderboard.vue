@@ -100,7 +100,6 @@ export default {
       this.data.sort(function (a,b) {
         return b.score - a.score;
       });
-      console.log(this.data);
     },
     maximumScore(array){
       var max = 0;

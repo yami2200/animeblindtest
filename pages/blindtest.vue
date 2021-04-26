@@ -18,7 +18,7 @@
           ></v-slider>
           <textf @commit="commit"></textf>
         </div>
-        <fd @next="next" v-else :correct="correct" :img="playlist.songs[currentIndex].img" :answer="playlist.songs[currentIndex].name"></fd>
+        <fd @next="next" v-else :correct="correct" :img="img" :answer="playlist.songs[currentIndex].name"></fd>
       </div>
     </v-row>
   </v-container>
@@ -28,6 +28,7 @@
 import inputText from "../components/inputText";
 import feedback from "../components/feedback";
 import {Howl, Howler} from 'howler';
+import {storage} from "../plugins/firebase"
 
 export default {
   name: "blindtest.vue",
@@ -81,9 +82,14 @@ export default {
     },
     loadCurrent(){
       this.guess = true;
-      this.sound = new Audio(this.playlist.songs[this.currentIndex].music);
-      this.sound.addEventListener('canplaythrough', this.soundLoaded, false);
-      //this.sound.load();
+      storage.ref(this.playlist.songs[this.currentIndex].music).getDownloadURL()
+        .then((url) => {
+          this.sound = new Audio(url);
+          this.sound.addEventListener('canplaythrough', this.soundLoaded, false);
+        })
+        .catch((error) => {
+          this.$router.push("/");
+        });
     },
     soundLoaded(){
       this.sound.removeEventListener("canplaythrough", this.soundLoaded, false);
@@ -96,8 +102,15 @@ export default {
           this.commit("Error Time #484248")
         }
       }, 100);
-      var img = new Image();
-      img.src = this.playlist.songs[this.currentIndex].img;
+      storage.ref(this.playlist.songs[this.currentIndex].img).getDownloadURL()
+        .then((url) => {
+          this.img = url;
+          var loadimg = new Image();
+          loadimg.src = url;
+        })
+        .catch((error) => {
+          this.img = "";
+        });
     },
     setScore(){
       let score = 0;
@@ -133,7 +146,8 @@ export default {
     sound: null,
     volume: 0.5,
     updateSeek: null,
-    game: null
+    game: null,
+    img: "",
   }),
 
   mounted() {

@@ -91,6 +91,7 @@ sw.*
 
 # images and musics
 /static
+/assetsCloud
 
 #firebase key
 plugins/firebase.js

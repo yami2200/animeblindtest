@@ -3,7 +3,7 @@
     {
       "name" : "onepiece",
       "listTypes" : ["All", "20", "10"],
-      "img" : "onepiecelogo.jpg",
+      "img" : "presentation/onepiecelogo.jpg",
       "difficulty" : ["normal"],
       "songs" : [
         {

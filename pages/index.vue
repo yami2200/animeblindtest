@@ -46,6 +46,7 @@
 <script>
 import {melangePlaylist} from "@/plugins/lib";
 import {mix_selectionPlaylistPage} from "@/mixins/mix_selectionPlaylistPage";
+import {storage} from "@/plugins/firebase";
 
 export default {
 
@@ -68,7 +69,13 @@ export default {
       this.$router.push("/blindtest");
     },
     postMounted(){
-      this.img = this.listPlaylist.list[0].img;
+      storage.ref(this.listPlaylist.list[0].img).getDownloadURL()
+        .then((url) => {
+          this.img = url;
+        })
+        .catch((error) => {
+          this.img = "";
+        });
     }
   },
 
