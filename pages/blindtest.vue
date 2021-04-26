@@ -27,7 +27,6 @@
 <script>
 import inputText from "../components/inputText";
 import feedback from "../components/feedback";
-import {Howl, Howler} from 'howler';
 import {storage} from "../plugins/firebase"
 
 export default {
