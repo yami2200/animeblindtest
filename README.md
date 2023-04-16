@@ -2,8 +2,7 @@
 
 ## ⭐ About
 
-Yami Blindtest is a website where you can play blindtest of differents series.
-Discover the website here : https://yami-blindtest.tk/
+Yami Blindtest is a website where you can play blindtest.
 
 ## 🏆 Score :
 Train your knowledge in musics and get faster to recognize them to improve your score.
